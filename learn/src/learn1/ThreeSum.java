@@ -28,6 +28,7 @@ public class ThreeSum {
 			}
 			
 		}
+		System.out.println(list.);
 		
 		
 		
