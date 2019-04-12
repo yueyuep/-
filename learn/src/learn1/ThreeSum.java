@@ -73,10 +73,10 @@ public class ThreeSum {
 		//我们可以扩充2sum地思想，简化成2sum地问题。
 		//注意这种问题其实就是利用排序的思想，从而减少时间复杂度
 		
-		int[] s=new int[] {-1,0,1,2,-1,-4};
+		int[] s=new int[] {-1,0,1,2,-1,-4,5};
 		
 		ThreeSum tm=new ThreeSum();
-		tm.solution2(s);
+		tm.solution1(s);
 
 	}
 

@@ -1,11 +1,12 @@
 package learn1;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 public class TwoSum {
 	public int [] solution(int[] num,int target) {
-		HashMap<Integer, Integer> m=new HashMap<Integer,Integer>();	
+		HashMap<Integer, Integer> m=new HashMap<Integer,Integer>();
 		int temp[]=new int[2];
 		for(int i=0;i<num.length;i++) {
 			if(m.containsKey(target-num[i])) {
@@ -20,41 +21,52 @@ public class TwoSum {
 		return temp;
 		
 	}
-	
-	public void irgodic(int n) {
-		HashMap<Integer, Integer> map=new HashMap<Integer,Integer>();
-		Random random=new Random(n);
-		random.setSeed(30);
-		int [] num=new int[n];
-		for(int i=1;i<=n;i++) {
-			//注意我们的hashmap的键值对是从1开始的。
-			//我们将键值为null的值放在0处的enty位置。
-			int temp=random.nextInt(100);
-			System.out.println(temp);
-			map.put(i, temp);
+	public void solution2(int[] num,int target) {
+		
+		//基于排序和二分查找的算法，来进行求解，降低了时间复杂度。
+		Arrays.sort(num);
+		int low=0;
+		int high=num.length-1;
+		while(low<high)
+			if(num[low]+num[high]>target) {high--;}
+		else if (num[low]+num[high]<target) {
+			low++;
 		}
-		Integer integer=null;
-		//使用iterator 来进行遍历。
-		Iterator<Map.Entry<Integer, Integer>> itr=map.entrySet().iterator();
-		while(itr.hasNext()) {
-			Map.Entry<Integer, Integer> temp=itr.next();
-			
-			System.out.println("key is:"+temp.getKey()+"\t"+"value is :"+temp.getValue());
+		else {
+			System.out.printf("%d\t%d\n",num[low],num[high]);
+			low++;
+			high--;
 		}
+		
 		
 	}
 	
+	public int [] irgodic(int n) {
+		Random random=new Random(n);
+		random.setSeed(30);
+		int [] num=new int[n];
+		for(int i=0;i<n;i++) {
+			
+			int temp=random.nextInt(100);
+			System.out.println(temp);
+			num[i]=temp;
+		}
+		return num;
+
+	}
+	
 	public static void main(String [] args) {
-//		TwoSum t=new TwoSum();
-//		int [] test=new int[]{2,7,11,15};
-//		int target=9;
+		TwoSum t=new TwoSum();
+		int [] test=new int[]{2,7,3,6,11,15};
+		int target=9;
+		t.solution2(test, target);
 //		int [] temp=t.solution(test, target);
 //		 System.out.printf("the index is %d %d",temp[0],temp[1]);
 		
-		
-		TwoSum t=new TwoSum();
-		int n=20;
-		t.irgodic(n);
+//		
+//		TwoSum t=new TwoSum();
+//		int n=20;
+//		t.irgodic(n);
 	}
 
 }
