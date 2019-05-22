@@ -1,4 +1,4 @@
-package learn1;
+package dataStructure;
 import java.util.*;
 public class matrix_01 {
 	//BFS 广度优先搜索策略
